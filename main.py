@@ -1,16 +1,16 @@
 import sys
-from PySide6.QtWidgets import QApplication, QWidget, QMessageBox
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtCore import QFile
+from PySide6.QtWidgets import QApplication
+from main_window import MainWindow
 
-app = QApplication(sys.argv)
 
-loader = QUiLoader()
-f = QFile("main.ui")
-f.open(QFile.ReadOnly)
-w = loader.load(f)
-f.close()
+def main():
+    app = QApplication(sys.argv)
 
-w.btnHello.clicked.connect(lambda: QMessageBox.information(w, "Hello", "Hello World"))
-w.show()
-sys.exit(app.exec())
+    window = MainWindow()
+    window.show()
+
+    sys.exit(app.exec())
+
+
+if __name__ == "__main__":
+    main()
